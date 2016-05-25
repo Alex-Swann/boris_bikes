@@ -19,15 +19,20 @@ describe DockingStation do
 
     it 'releases a working bike' do
       subject.dock(1)
+      bike = subject.release_bike
       expect(bike).to be_working
-      expect(subject.release_bike.class).to eq Fixnum
     end
 
     it 'should dock bike' do
-      expect(subject.dock(bike)).to eq bike
+      expect(subject.dock(1)).to be_an_instance_of(Bike)
     end
 
     it "doesn't release a bike if station empty" do
       expect{subject.release_bike}.to raise_error 'No bikes available!'
+    end
+
+    it "doesn't allow more bikes to be added beyond capacity" do
+      subject.dock(1)
+      expect{subject.dock(1)}.to raise_error "Dock station at capacity!"
     end
 end

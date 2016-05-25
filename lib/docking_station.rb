@@ -10,10 +10,12 @@ class DockingStation
   def release_bike
     raise "No bikes available!" unless @bikes > 0
     @bikes -= 1
+    Bike.new
   end
 
   def dock(bike)
-    @bikes += 1
-    bike
+    raise "Dock station at capacity!" unless @bikes < 1
+    @bikes += bike
+    Bike.new
   end
 end
