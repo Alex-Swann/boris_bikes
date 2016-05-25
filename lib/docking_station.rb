@@ -14,12 +14,19 @@ class DockingStation
 
   def release_bike
     raise 'No bikes in station!' if empty?
-    @bikes.shift
-    Bike.new
+    new_bike = @bikes.find{|bike| !bike.broken? }
+
+    if new_bike != nil
+       @bikes.delete(new_bike)
+       new_bike
+    else
+      "No bikes available. Remainder broken!"
+    end
   end
 
-  def dock(bike)
+  def dock(bike, user_report_broke=false)
      raise "Dock full!" if full?
+     bike.report_broken(user_report_broke)
      @bikes << bike
   end
 
@@ -34,4 +41,16 @@ class DockingStation
   end
 
 end
+
+station = DockingStation.new
+bike = Bike.new
+
+
+p station.dock(Bike.new,false)[0].broken?
+p station.dock(Bike.new,true)[1].broken?
+
+p station.bikes
+p station.release_bike
+p station.bikes
+p station.release_bike
 
