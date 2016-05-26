@@ -42,15 +42,15 @@ class DockingStation
 
 end
 
-station = DockingStation.new
-bike = Bike.new
+# station = DockingStation.new
+# bike = Bike.new
 
 
-p station.dock(Bike.new,false)[0].broken?
-p station.dock(Bike.new,true)[1].broken?
+# p station.dock(Bike.new,false)[0].broken?
+# p station.dock(Bike.new,true)[1].broken?
 
-p station.bikes
-p station.release_bike
-p station.bikes
-p station.release_bike
+# p station.bikes
+# p station.release_bike
+# p station.bikes
+# p station.release_bike
 
