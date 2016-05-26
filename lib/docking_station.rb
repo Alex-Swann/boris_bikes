@@ -30,6 +30,18 @@ class DockingStation
      @bikes << bike
   end
 
+  def load_fixed_bikes(location)
+    @bikes += location.bikes.select {|bike| !bike.broken?}
+    location.bikes.delete_if {|bike| !bike.broken? }
+    @bikes
+  end
+
+  def unload_broken_bikes(location)
+    location.bikes += @bikes.select {|bike| bike.broken?}
+    @bikes.delete_if {|bike| bike.broken?}
+    @bikes
+  end
+
   private
 
   def full?

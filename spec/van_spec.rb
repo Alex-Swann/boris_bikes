@@ -11,7 +11,7 @@ describe Van do
     bike2 = Bike.new
     station.dock(bike1, true)
     station.dock(bike2, false)
-    expect(Van.new.load_broken_bikes(station)).to eq [bike1]
+    expect(Van.new.load_bikes(station)).to eq [bike1]
     expect(station.bikes).to eq [bike2]
   end
 
@@ -22,9 +22,9 @@ describe Van do
     station.dock(bike1, true)
     station.dock(bike2, false)
     van = Van.new
-    van.load_broken_bikes(station)
+    van.load_bikes(station)
     garage = Garage.new
-    expect(van.unload_broken_bikes(garage)).to eq []
+    expect(van.unload_bikes(garage)).to eq []
     expect(garage.bikes).to eq [bike1]
   end
 
