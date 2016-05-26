@@ -1,6 +1,5 @@
 class Bike
 
-
   def report_broken(bool=true)
      @bool = bool
   end

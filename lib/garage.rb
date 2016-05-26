@@ -1,8 +1,13 @@
 require_relative 'bike'
-require_relative 'container'
 
 class Garage
-  include Container
+
+  attr_accessor :bikes
+
+  def initialize
+    @bikes = []
+  end
+
   def fix_bikes
     []
   end

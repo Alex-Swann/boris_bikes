@@ -1,13 +1,11 @@
 require_relative 'bike'
-require_relative 'container'
 
 class DockingStation
-  include Container
 
   DEFAULT_CAPACITY = 20
 
   attr_accessor :capacity
-  attr_reader :bikes
+  attr_accessor :bikes
 
   def initialize(capacity = DEFAULT_CAPACITY)
     @capacity = capacity
@@ -32,10 +30,6 @@ class DockingStation
      @bikes << bike
   end
 
-  def load_van
-    load_bikes(@bikes.select{|bike| bike.broken?})
-  end
-
   private
 
   def full?
@@ -48,11 +42,5 @@ class DockingStation
 
 end
 
-station = DockingStation.new
-bike = Bike.new
-station.dock(bike,true)
-
-station.bikes
-p station.load_van
 
 
