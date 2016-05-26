@@ -1,7 +1,7 @@
-class Van
+require_relative 'container'
 
-  def load_bikes
-    []
-  end
+class Van
+  include Container
 
 end
+
