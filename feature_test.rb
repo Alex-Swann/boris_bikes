@@ -5,13 +5,11 @@ require './lib/garage.rb'
 
 station = DockingStation.new
 bike = Bike.new
+
 garage = Garage.new
 van = Van.new
 
-
-p station.dock(bike,true)
-
+5.times{ station.dock(Bike.new) }
+2.times{ station.dock(Bike.new,true) }
 p station.bikes
-p station.load_van
-
 
