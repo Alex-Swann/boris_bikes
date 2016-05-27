@@ -5,7 +5,6 @@ require './lib/garage.rb'
 
 station = DockingStation.new
 bike = Bike.new
-
 garage = Garage.new
 van = Van.new
 
